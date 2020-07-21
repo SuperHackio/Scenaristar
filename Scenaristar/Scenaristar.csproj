@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E8F3E1D1-FCB9-4142-9060-B273C9DB7BD4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Scenaristar</RootNamespace>
+    <AssemblyName>Scenaristar</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Scenaristar.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Hack.io">
+      <HintPath>..\..\Hack.io\Hack.io\bin\Release\Hack.io.dll</HintPath>
+    </Reference>
+    <Reference Include="Hack.io.BCSV">
+      <HintPath>..\..\Hack.io\Hack.io.BCSV\bin\Release\Hack.io.BCSV.dll</HintPath>
+    </Reference>
+    <Reference Include="Hack.io.RARC">
+      <HintPath>..\..\Hack.io\Hack.io.RARC\bin\Release\Hack.io.RARC.dll</HintPath>
+    </Reference>
+    <Reference Include="Hack.io.YAZ0">
+      <HintPath>..\..\Hack.io\Hack.io.YAZ0\bin\Release\Hack.io.YAZ0.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenario.cs" />
+    <Compile Include="StarAppearenceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StarAppearenceForm.Designer.cs">
+      <DependentUpon>StarAppearenceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ZoneForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ZoneForm.Designer.cs">
+      <DependentUpon>ZoneForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="StarAppearenceForm.resx">
+      <DependentUpon>StarAppearenceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ZoneForm.resx">
+      <DependentUpon>ZoneForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StarFrame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PowerStar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GreenStar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HiddenStarOverlay.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CloneComet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DaredevilComet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ExterminateComet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PurpleComet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\QuickComet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SpeedyComet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SilverStar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PurpleCoin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NoteFairy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Peewee.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GigaLakitu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bugaboom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DiggaLeg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mandibug.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Rollodillo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sorbetti.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Glamdozer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PrincePikante.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KingWhomp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gobblegut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FieryGobblegut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FieryDinoPiranha.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BoomsdayMachine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bowser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GoldenChomp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TheChimp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ExterminationTarget.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gummit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pinhead.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gearmo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GearmoHunters.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CaptainToad.png" />
+    <Content Include="Scenaristar.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
