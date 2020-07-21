@@ -80,7 +80,7 @@ namespace Scenaristar
             set
             {
                 privfilename = value;
-                CurrentFileToolStripTextBox.Text = value;
+                CurrentFileToolStripTextBox.Text = new FileInfo(value ?? "Unsaved File").Name;
             }
         }
 

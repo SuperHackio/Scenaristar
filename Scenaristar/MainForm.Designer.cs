@@ -201,6 +201,7 @@
             this.CurrentFileToolStripTextBox.Name = "CurrentFileToolStripTextBox";
             this.CurrentFileToolStripTextBox.ReadOnly = true;
             this.CurrentFileToolStripTextBox.Size = new System.Drawing.Size(350, 23);
+            this.CurrentFileToolStripTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // InfoStatusStrip
             // 
@@ -307,11 +308,11 @@
             // StarIDLabel
             // 
             this.StarIDLabel.AutoSize = true;
-            this.StarIDLabel.Location = new System.Drawing.Point(466, 58);
+            this.StarIDLabel.Location = new System.Drawing.Point(452, 58);
             this.StarIDLabel.Name = "StarIDLabel";
-            this.StarIDLabel.Size = new System.Drawing.Size(43, 13);
+            this.StarIDLabel.Size = new System.Drawing.Size(57, 13);
             this.StarIDLabel.TabIndex = 7;
-            this.StarIDLabel.Text = "Star ID:";
+            this.StarIDLabel.Text = "Star Code:";
             // 
             // ScenarioTypeComboBox
             // 
