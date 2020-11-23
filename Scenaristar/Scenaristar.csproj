@@ -40,18 +40,6 @@
     <ApplicationIcon>Scenaristar.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Hack.io">
-      <HintPath>..\..\Hack.io\Hack.io\bin\Release\Hack.io.dll</HintPath>
-    </Reference>
-    <Reference Include="Hack.io.BCSV">
-      <HintPath>..\..\Hack.io\Hack.io.BCSV\bin\Release\Hack.io.BCSV.dll</HintPath>
-    </Reference>
-    <Reference Include="Hack.io.RARC">
-      <HintPath>..\..\Hack.io\Hack.io.RARC\bin\Release\Hack.io.RARC.dll</HintPath>
-    </Reference>
-    <Reference Include="Hack.io.YAZ0">
-      <HintPath>..\..\Hack.io\Hack.io.YAZ0\bin\Release\Hack.io.YAZ0.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -227,6 +215,24 @@
   <ItemGroup>
     <None Include="Resources\CaptainToad.png" />
     <Content Include="Scenaristar.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Hack.io\Hack.io.BCSV\Hack.io.BCSV.csproj">
+      <Project>{34ca21f7-2cfc-4965-8b89-8fb8cc2e4ea2}</Project>
+      <Name>Hack.io.BCSV</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Hack.io\Hack.io.RARC\Hack.io.RARC.csproj">
+      <Project>{4f4162cc-70ff-4eb9-ab34-d5ff98490c34}</Project>
+      <Name>Hack.io.RARC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Hack.io\Hack.io.YAZ0\Hack.io.YAZ0.csproj">
+      <Project>{bdda5ade-2d88-483d-854c-d295ed9f8089}</Project>
+      <Name>Hack.io.YAZ0</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Hack.io\Hack.io\Hack.io.csproj">
+      <Project>{389f751d-db2a-4746-b3bc-88e106c361ce}</Project>
+      <Name>Hack.io</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

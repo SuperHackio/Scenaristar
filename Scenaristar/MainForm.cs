@@ -59,6 +59,10 @@ namespace Scenaristar
                 OpenWith(args[0]);
 
             StatusTimer.Start();
+
+#if DEBUG
+            ScenarioNumNumericUpDown.Maximum = 8;
+#endif
         }
         //InfoToolStripStatusLabel.Text = "";
         //InfoToolStripProgressBar.PerformStep();
@@ -212,27 +216,23 @@ namespace Scenaristar
             {
                 InfoToolStripStatusLabel.Text = "Loading...";
                 Refresh();
-                RARC ScenarioArchive = YAZ0.Check(Filename) ? new RARC(YAZ0.Decompress(Filename), Filename) : new RARC(Filename);
-                List<RARCFile> FoundScenarioFiles = ScenarioArchive.FindFile("ScenarioData.bcsv");
-                if (FoundScenarioFiles.Count > 1)
-                    MessageBox.Show("This archive has multiple ScenarioData.bcsv files. Only the first one found will be loaded", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                if (FoundScenarioFiles.Count == 0)
+                RARC ScenarioArchive = YAZ0.Check(Filename) ? new RARC(new MemoryStream(YAZ0.Decompress(File.ReadAllBytes(Filename))), Filename) : new RARC(Filename);
+                string ScenarioDataPath = ScenarioArchive.GetItemKeyFromNoCase("ScenarioData.bcsv");
+                if (ScenarioDataPath is null)
                 {
                     MessageBox.Show("This archive doesn't have any ScenarioData.bcsv files.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                ScenarioBCSV = FoundScenarioFiles[0];
+                ScenarioBCSV = (RARC.File)ScenarioArchive[ScenarioDataPath];
 
 
-                List<RARCFile> FoundZoneFiles = ScenarioArchive.FindFile("ZoneList.bcsv");
-                if (FoundZoneFiles.Count > 1)
-                    MessageBox.Show("This archive has multiple ZoneList.bcsv files. Only the first one found will be loaded", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                if (FoundZoneFiles.Count == 0)
+                string ZoneListPath = ScenarioArchive.GetItemKeyFromNoCase("ZoneList.bcsv");
+                if (ZoneListPath is null)
                 {
                     MessageBox.Show("This archive doesn't have any ZoneList.bcsv files.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                ZonesBCSV = FoundZoneFiles[0];
+                ZonesBCSV = (RARC.File)ScenarioArchive[ZoneListPath];
 
                 for (int i = 0; i < ZonesBCSV.EntryCount; i++)
                 {
@@ -336,20 +336,24 @@ namespace Scenaristar
                 StatusTimer.Start();
                 return false;
             }
-            RARC ScenarioArchive = YAZ0.Check(CurrentFileName) ? new RARC(YAZ0.Decompress(CurrentFileName), CurrentFileName) : new RARC(CurrentFileName);
-            InfoToolStripStatusLabel.Text = "Building BCSV files...";
+            RARC ScenarioArchive = YAZ0.Check(CurrentFileName) ? new RARC(new MemoryStream(YAZ0.Decompress(File.ReadAllBytes(CurrentFileName))), CurrentFileName) : new RARC(CurrentFileName);
 
-            if (ScenarioArchive.FindFile("ScenarioData.bcsv").Count == 0 || ScenarioArchive.FindFile("ZoneList.bcsv").Count == 0)
+            string ScenarioDataPath = ScenarioArchive.GetItemKeyFromNoCase("ScenarioData.bcsv");
+            string ZoneListPath = ScenarioArchive.GetItemKeyFromNoCase("ZoneList.bcsv");
+            if (ScenarioDataPath is null || ZoneListPath is null)
             {
-                MessageBox.Show("The Chosen Archive doesn't have ScenarioData.bcsv or ZoneList.bcsv", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("The Chosen Archive is missing ScenarioData.bcsv and/or ZoneList.bcsv", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 InfoToolStripStatusLabel.Text = "Save Failed!";
                 StatusTimer.Start();
                 return false;
             }
+            InfoToolStripStatusLabel.Text = "Building BCSV files...";
 
-            ScenarioArchive.ReplaceFileByName("ScenarioData.bcsv", SaveToBCSV());
-            ScenarioArchive.ReplaceFileByName("ZoneList.bcsv", SaveZonesBCSV());
-            ScenarioArchive.Save();
+            ScenarioArchive[ScenarioDataPath] = null;
+            ScenarioArchive["ScenarioData.bcsv"] = (RARC.File)SaveToBCSV();
+            ScenarioArchive[ZoneListPath] = null;
+            ScenarioArchive["ZoneList.bcsv"] = (RARC.File)SaveZonesBCSV();
+            ScenarioArchive.Save(CurrentFileName);
             if (MessageBox.Show("Would you like to Yaz0 Encode your Archive?", "Yaz0", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 YAZ0.Compress(ScenarioArchive.FileName);
             InfoToolStripStatusLabel.Text = "Save Complete!";

@@ -30,7 +30,11 @@ namespace GalaxyMaps
             /// <summary>
             /// Needs to be hacked into the game.
             /// </summary>
-            Red
+            Red,
+            /// <summary>
+            /// Needs to be hacked into the game.
+            /// </summary>
+            Grand
 #endif
         }
         /// <summary>
