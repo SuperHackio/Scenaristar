@@ -7,7 +7,7 @@
     <ProjectGuid>{E8F3E1D1-FCB9-4142-9060-B273C9DB7BD4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Scenaristar</RootNamespace>
-    <AssemblyName>Scenaristar Extended</AssemblyName>
+    <AssemblyName>Scenaristar</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -37,7 +37,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>greenstar.ico</ApplicationIcon>
+    <ApplicationIcon>Scenaristar.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -216,10 +216,8 @@
     <None Include="Resources\CaptainToad.png" />
     <None Include="Resources\RedStar.bmp" />
     <None Include="Resources\GrandStar.png" />
-    <Content Include="greenstar.ico" />
     <None Include="Resources\%24this.Icon.ico" />
     <None Include="Resources\BlueStar.png" />
-    <Content Include="Scenaristar.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Hack.io\Hack.io.BCSV\Hack.io.BCSV.csproj">
@@ -238,6 +236,9 @@
       <Project>{389f751d-db2a-4746-b3bc-88e106c361ce}</Project>
       <Name>Hack.io</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scenaristar.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

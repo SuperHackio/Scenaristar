@@ -25,7 +25,7 @@ namespace Scenaristar
             InitializeComponent();
             CenterToScreen();
             ScenarioListView.SetDoubleBuffered();
-            Text = "Scenaristar Extended - " + Application.ProductVersion;
+            Text = "Scenaristar - " + Application.ProductVersion;
             InfoToolStripStatusLabel.Text = "Welcome to Scenaristar!";
             ImageSizeToolStripComboBox.SelectedIndex = 0;
             ScenarioTypeComboBox.DataSource = Enum.GetValues(typeof(ScenarioSMG2.StarType));
@@ -983,17 +983,17 @@ namespace Scenaristar
         private const int MaxBeforeReset = 5;
         private readonly string[] Messages = new string[]
         {
-            "Scenaristar Extended " + Application.ProductVersion + ", \"" + UpdateName + "\"",
-            "Scenaristar was made by Super Hackio, extended by Evanbowl",
+            "Scenaristar " + Application.ProductVersion + ", \"" + UpdateName + "\"",
+            "Scenaristar was made by Super Hackio",
             "Scenaristar is powered by the Hack.io Library"
         };
         private readonly string[] Flavour = new string[]
         {
-            "Thank you for using Scenaristar Extended!",
+            "Thank you for using Scenaristar!",
             "This is the start of the galaxy creation process, or is it the end?",
             "Legend has it that Red and Blue Stars are new Scenario Types",
             "Can you imagine a world where Super Mario Galaxy doesn't exist?",
-            "Hello SMH64"
+            "Big Yeet"
         };
 
         private void StatusTimer_Tick(object sender, EventArgs e)
