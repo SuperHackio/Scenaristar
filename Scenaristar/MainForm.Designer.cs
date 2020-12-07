@@ -93,6 +93,8 @@
             this.StatusStripTimer = new System.Windows.Forms.Timer(this.components);
             this.MoveZoneUpButton = new System.Windows.Forms.Button();
             this.MoveZoneDownButton = new System.Windows.Forms.Button();
+            this.Star8CheckBox = new System.Windows.Forms.CheckBox();
+            this.Star7CheckBox = new System.Windows.Forms.CheckBox();
             this.MainFormMenuStrip.SuspendLayout();
             this.InfoStatusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ScenarioNumNumericUpDown)).BeginInit();
@@ -172,15 +174,17 @@
             // 
             // AddToolStripMenuItem
             // 
+            this.AddToolStripMenuItem.Enabled = false;
             this.AddToolStripMenuItem.Name = "AddToolStripMenuItem";
-            this.AddToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.AddToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.AddToolStripMenuItem.Text = "&Add Scenario";
             this.AddToolStripMenuItem.Click += new System.EventHandler(this.AddToolStripMenuItem_Click);
             // 
             // RemoveToolStripMenuItem
             // 
+            this.RemoveToolStripMenuItem.Enabled = false;
             this.RemoveToolStripMenuItem.Name = "RemoveToolStripMenuItem";
-            this.RemoveToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.RemoveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.RemoveToolStripMenuItem.Text = "&Remove Scenario";
             this.RemoveToolStripMenuItem.Click += new System.EventHandler(this.RemoveToolStripMenuItem_Click);
             // 
@@ -385,6 +389,8 @@
             // 
             // StarGroupBox
             // 
+            this.StarGroupBox.Controls.Add(this.Star8CheckBox);
+            this.StarGroupBox.Controls.Add(this.Star7CheckBox);
             this.StarGroupBox.Controls.Add(this.Star6CheckBox);
             this.StarGroupBox.Controls.Add(this.Star5CheckBox);
             this.StarGroupBox.Controls.Add(this.Star4CheckBox);
@@ -393,7 +399,7 @@
             this.StarGroupBox.Controls.Add(this.Star1CheckBox);
             this.StarGroupBox.Location = new System.Drawing.Point(261, 161);
             this.StarGroupBox.Name = "StarGroupBox";
-            this.StarGroupBox.Size = new System.Drawing.Size(195, 65);
+            this.StarGroupBox.Size = new System.Drawing.Size(195, 66);
             this.StarGroupBox.TabIndex = 16;
             this.StarGroupBox.TabStop = false;
             this.StarGroupBox.Text = "Stars in this Scenario";
@@ -525,17 +531,18 @@
             this.LayerGroupBox.Controls.Add(this.LayerCCheckBox);
             this.LayerGroupBox.Controls.Add(this.LayerBCheckBox);
             this.LayerGroupBox.Controls.Add(this.LayerACheckBox);
-            this.LayerGroupBox.Location = new System.Drawing.Point(261, 232);
+            this.LayerGroupBox.Location = new System.Drawing.Point(261, 233);
             this.LayerGroupBox.Name = "LayerGroupBox";
-            this.LayerGroupBox.Size = new System.Drawing.Size(195, 184);
+            this.LayerGroupBox.Size = new System.Drawing.Size(195, 183);
             this.LayerGroupBox.TabIndex = 20;
             this.LayerGroupBox.TabStop = false;
             this.LayerGroupBox.Text = "Zone Layers";
             // 
             // RenameZoneButton
             // 
+            this.RenameZoneButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.RenameZoneButton.Enabled = false;
-            this.RenameZoneButton.Location = new System.Drawing.Point(6, 126);
+            this.RenameZoneButton.Location = new System.Drawing.Point(6, 125);
             this.RenameZoneButton.Name = "RenameZoneButton";
             this.RenameZoneButton.Size = new System.Drawing.Size(183, 23);
             this.RenameZoneButton.TabIndex = 24;
@@ -545,8 +552,9 @@
             // 
             // SubtractZoneButton
             // 
+            this.SubtractZoneButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.SubtractZoneButton.Enabled = false;
-            this.SubtractZoneButton.Location = new System.Drawing.Point(101, 155);
+            this.SubtractZoneButton.Location = new System.Drawing.Point(101, 154);
             this.SubtractZoneButton.Name = "SubtractZoneButton";
             this.SubtractZoneButton.Size = new System.Drawing.Size(88, 23);
             this.SubtractZoneButton.TabIndex = 23;
@@ -556,8 +564,9 @@
             // 
             // AddZoneButton
             // 
+            this.AddZoneButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.AddZoneButton.Enabled = false;
-            this.AddZoneButton.Location = new System.Drawing.Point(6, 155);
+            this.AddZoneButton.Location = new System.Drawing.Point(6, 154);
             this.AddZoneButton.Name = "AddZoneButton";
             this.AddZoneButton.Size = new System.Drawing.Size(89, 23);
             this.AddZoneButton.TabIndex = 22;
@@ -581,7 +590,7 @@
             // 
             this.LayerOCheckBox.AutoSize = true;
             this.LayerOCheckBox.Enabled = false;
-            this.LayerOCheckBox.Location = new System.Drawing.Point(110, 88);
+            this.LayerOCheckBox.Location = new System.Drawing.Point(106, 88);
             this.LayerOCheckBox.Name = "LayerOCheckBox";
             this.LayerOCheckBox.Size = new System.Drawing.Size(34, 17);
             this.LayerOCheckBox.TabIndex = 20;
@@ -629,7 +638,7 @@
             // 
             this.LayerKCheckBox.AutoSize = true;
             this.LayerKCheckBox.Enabled = false;
-            this.LayerKCheckBox.Location = new System.Drawing.Point(110, 65);
+            this.LayerKCheckBox.Location = new System.Drawing.Point(106, 65);
             this.LayerKCheckBox.Name = "LayerKCheckBox";
             this.LayerKCheckBox.Size = new System.Drawing.Size(33, 17);
             this.LayerKCheckBox.TabIndex = 16;
@@ -677,7 +686,7 @@
             // 
             this.LayerGCheckBox.AutoSize = true;
             this.LayerGCheckBox.Enabled = false;
-            this.LayerGCheckBox.Location = new System.Drawing.Point(110, 42);
+            this.LayerGCheckBox.Location = new System.Drawing.Point(106, 42);
             this.LayerGCheckBox.Name = "LayerGCheckBox";
             this.LayerGCheckBox.Size = new System.Drawing.Size(34, 17);
             this.LayerGCheckBox.TabIndex = 12;
@@ -725,7 +734,7 @@
             // 
             this.LayerCCheckBox.AutoSize = true;
             this.LayerCCheckBox.Enabled = false;
-            this.LayerCCheckBox.Location = new System.Drawing.Point(110, 19);
+            this.LayerCCheckBox.Location = new System.Drawing.Point(106, 19);
             this.LayerCCheckBox.Name = "LayerCCheckBox";
             this.LayerCCheckBox.Size = new System.Drawing.Size(33, 17);
             this.LayerCCheckBox.TabIndex = 8;
@@ -786,6 +795,30 @@
             this.MoveZoneDownButton.Text = "Down";
             this.MoveZoneDownButton.UseVisualStyleBackColor = true;
             this.MoveZoneDownButton.Click += new System.EventHandler(this.MoveZoneDownButton_Click);
+            // 
+            // Star8CheckBox
+            // 
+            this.Star8CheckBox.AutoSize = true;
+            this.Star8CheckBox.Enabled = false;
+            this.Star8CheckBox.Location = new System.Drawing.Point(66, 65);
+            this.Star8CheckBox.Name = "Star8CheckBox";
+            this.Star8CheckBox.Size = new System.Drawing.Size(54, 17);
+            this.Star8CheckBox.TabIndex = 7;
+            this.Star8CheckBox.Text = "Star 8";
+            this.Star8CheckBox.UseVisualStyleBackColor = true;
+            this.Star8CheckBox.CheckedChanged += new System.EventHandler(this.StarCheckBox_CheckedChanged);
+            // 
+            // Star7CheckBox
+            // 
+            this.Star7CheckBox.AutoSize = true;
+            this.Star7CheckBox.Enabled = false;
+            this.Star7CheckBox.Location = new System.Drawing.Point(6, 65);
+            this.Star7CheckBox.Name = "Star7CheckBox";
+            this.Star7CheckBox.Size = new System.Drawing.Size(54, 17);
+            this.Star7CheckBox.TabIndex = 6;
+            this.Star7CheckBox.Text = "Star 7";
+            this.Star7CheckBox.UseVisualStyleBackColor = true;
+            this.Star7CheckBox.CheckedChanged += new System.EventHandler(this.StarCheckBox_CheckedChanged);
             // 
             // MainForm
             // 
@@ -903,6 +936,8 @@
         private System.Windows.Forms.ToolStripMenuItem NewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SaveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripTextBox CurrentFileToolStripTextBox;
+        private System.Windows.Forms.CheckBox Star8CheckBox;
+        private System.Windows.Forms.CheckBox Star7CheckBox;
     }
 }
 
