@@ -34,7 +34,11 @@ namespace GalaxyMaps
             /// <summary>
             /// Needs to be hacked into the game.
             /// </summary>
-            Grand
+            Grand,
+            /// <summary>
+            /// Needs to be hacked into the game.
+            /// </summary>
+            Blue
 #endif
         }
         /// <summary>

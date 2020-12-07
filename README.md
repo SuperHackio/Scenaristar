@@ -14,6 +14,14 @@ Powered by the [Hack.io Libraries](https://github.com/SuperHackio/Hack.io)
   - Easy access to PowerStarAppear objects
   - Reordering the ZoneList
 - Nice "At a Glance" review visuals
+
+##New Features (Note that these are built for a patch that is still in WIP phase!)
+Red Star functionality
+Blue Star functionality
+
+Side note:
+yeah this is messy. My first ever source code edit.
+I will clean everything up when I feel finished with this.
   
 Previews:<br/>
 ![Sky Station Galaxy's Scenario file](https://user-images.githubusercontent.com/44330283/88088029-a54e3b80-cb3e-11ea-9bde-ce2791a44b89.png)

@@ -7,7 +7,7 @@
     <ProjectGuid>{E8F3E1D1-FCB9-4142-9060-B273C9DB7BD4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Scenaristar</RootNamespace>
-    <AssemblyName>Scenaristar</AssemblyName>
+    <AssemblyName>Scenaristar Extended</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -37,7 +37,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Scenaristar.ico</ApplicationIcon>
+    <ApplicationIcon>greenstar.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -214,6 +214,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\CaptainToad.png" />
+    <None Include="Resources\RedStar.bmp" />
+    <None Include="Resources\GrandStar.png" />
+    <Content Include="greenstar.ico" />
+    <None Include="Resources\%24this.Icon.ico" />
+    <None Include="Resources\BlueStar.png" />
     <Content Include="Scenaristar.ico" />
   </ItemGroup>
   <ItemGroup>
