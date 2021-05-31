@@ -54,7 +54,7 @@
             this.CometSecondsNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CometSecondsNumericUpDown.Location = new System.Drawing.Point(184, 12);
             this.CometSecondsNumericUpDown.Maximum = new decimal(new int[] {
-            60,
+            59,
             0,
             0,
             0});
@@ -77,7 +77,7 @@
             this.CometMinutesNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CometMinutesNumericUpDown.Location = new System.Drawing.Point(62, 12);
             this.CometMinutesNumericUpDown.Maximum = new decimal(new int[] {
-            60,
+            32767,
             0,
             0,
             0});

@@ -215,7 +215,7 @@
             // 
             this.CometMinutesNumericUpDown.Location = new System.Drawing.Point(56, 19);
             this.CometMinutesNumericUpDown.Maximum = new decimal(new int[] {
-            60,
+            32767,
             0,
             0,
             0});
@@ -259,7 +259,7 @@
             // 
             this.CometSecondsNumericUpDown.Location = new System.Drawing.Point(179, 19);
             this.CometSecondsNumericUpDown.Maximum = new decimal(new int[] {
-            60,
+            59,
             0,
             0,
             0});
