@@ -39,6 +39,9 @@
             this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RemoveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TemplatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MoveScenarioUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MoveScenarioDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ImageSizeToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.CurrentFileToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.InfoStatusStrip = new System.Windows.Forms.StatusStrip();
@@ -95,6 +98,7 @@
             this.StatusStripTimer = new System.Windows.Forms.Timer(this.components);
             this.MoveZoneUpButton = new System.Windows.Forms.Button();
             this.MoveZoneDownButton = new System.Windows.Forms.Button();
+            this.CometTimerButton = new System.Windows.Forms.Button();
             this.MainFormMenuStrip.SuspendLayout();
             this.InfoStatusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ScenarioNumNumericUpDown)).BeginInit();
@@ -167,7 +171,10 @@
             // 
             this.EditToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddToolStripMenuItem,
-            this.RemoveToolStripMenuItem});
+            this.RemoveToolStripMenuItem,
+            this.MoveScenarioUpToolStripMenuItem,
+            this.MoveScenarioDownToolStripMenuItem,
+            this.TemplatesToolStripMenuItem});
             this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
             this.EditToolStripMenuItem.Size = new System.Drawing.Size(39, 23);
             this.EditToolStripMenuItem.Text = "Edit";
@@ -176,7 +183,8 @@
             // 
             this.AddToolStripMenuItem.Enabled = false;
             this.AddToolStripMenuItem.Name = "AddToolStripMenuItem";
-            this.AddToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.AddToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.AddToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
             this.AddToolStripMenuItem.Text = "&Add Scenario";
             this.AddToolStripMenuItem.Click += new System.EventHandler(this.AddToolStripMenuItem_Click);
             // 
@@ -184,9 +192,37 @@
             // 
             this.RemoveToolStripMenuItem.Enabled = false;
             this.RemoveToolStripMenuItem.Name = "RemoveToolStripMenuItem";
-            this.RemoveToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.RemoveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Delete)));
+            this.RemoveToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
             this.RemoveToolStripMenuItem.Text = "&Remove Scenario";
             this.RemoveToolStripMenuItem.Click += new System.EventHandler(this.RemoveToolStripMenuItem_Click);
+            // 
+            // TemplatesToolStripMenuItem
+            // 
+            this.TemplatesToolStripMenuItem.Enabled = false;
+            this.TemplatesToolStripMenuItem.Name = "TemplatesToolStripMenuItem";
+            this.TemplatesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
+            this.TemplatesToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.TemplatesToolStripMenuItem.Text = "Templates...";
+            this.TemplatesToolStripMenuItem.Click += new System.EventHandler(this.TemplatesToolStripMenuItem_Click);
+            // 
+            // MoveScenarioUpToolStripMenuItem
+            // 
+            this.MoveScenarioUpToolStripMenuItem.Enabled = false;
+            this.MoveScenarioUpToolStripMenuItem.Name = "MoveScenarioUpToolStripMenuItem";
+            this.MoveScenarioUpToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Up)));
+            this.MoveScenarioUpToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.MoveScenarioUpToolStripMenuItem.Text = "Move Scenario Up";
+            this.MoveScenarioUpToolStripMenuItem.Click += new System.EventHandler(this.MoveScenarioUpToolStripMenuItem_Click);
+            // 
+            // MoveScenarioDownToolStripMenuItem
+            // 
+            this.MoveScenarioDownToolStripMenuItem.Enabled = false;
+            this.MoveScenarioDownToolStripMenuItem.Name = "MoveScenarioDownToolStripMenuItem";
+            this.MoveScenarioDownToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Down)));
+            this.MoveScenarioDownToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.MoveScenarioDownToolStripMenuItem.Text = "Move Scenario Down";
+            this.MoveScenarioDownToolStripMenuItem.Click += new System.EventHandler(this.MoveScenarioDownToolStripMenuItem_Click);
             // 
             // ImageSizeToolStripComboBox
             // 
@@ -262,9 +298,9 @@
             // ScenarioNameTextBox
             // 
             this.ScenarioNameTextBox.Enabled = false;
-            this.ScenarioNameTextBox.Location = new System.Drawing.Point(347, 30);
+            this.ScenarioNameTextBox.Location = new System.Drawing.Point(356, 30);
             this.ScenarioNameTextBox.Name = "ScenarioNameTextBox";
-            this.ScenarioNameTextBox.Size = new System.Drawing.Size(265, 20);
+            this.ScenarioNameTextBox.Size = new System.Drawing.Size(256, 20);
             this.ScenarioNameTextBox.TabIndex = 4;
             this.ScenarioNameTextBox.TextChanged += new System.EventHandler(this.ScenarioNameTextBox_TextChanged);
             // 
@@ -375,9 +411,9 @@
             // AppearenceTextBox
             // 
             this.AppearenceTextBox.Enabled = false;
-            this.AppearenceTextBox.Location = new System.Drawing.Point(362, 109);
+            this.AppearenceTextBox.Location = new System.Drawing.Point(356, 109);
             this.AppearenceTextBox.Name = "AppearenceTextBox";
-            this.AppearenceTextBox.Size = new System.Drawing.Size(208, 20);
+            this.AppearenceTextBox.Size = new System.Drawing.Size(214, 20);
             this.AppearenceTextBox.TabIndex = 14;
             this.AppearenceTextBox.TextChanged += new System.EventHandler(this.AppearenceTextBox_TextChanged);
             // 
@@ -526,7 +562,7 @@
             0,
             0});
             this.TimeLimitNumericUpDown.Name = "TimeLimitNumericUpDown";
-            this.TimeLimitNumericUpDown.Size = new System.Drawing.Size(100, 20);
+            this.TimeLimitNumericUpDown.Size = new System.Drawing.Size(58, 20);
             this.TimeLimitNumericUpDown.TabIndex = 19;
             this.TimeLimitNumericUpDown.ValueChanged += new System.EventHandler(this.TimeLimitNumericUpDown_ValueChanged);
             // 
@@ -825,11 +861,23 @@
             this.MoveZoneDownButton.UseVisualStyleBackColor = true;
             this.MoveZoneDownButton.Click += new System.EventHandler(this.MoveZoneDownButton_Click);
             // 
+            // CometTimerButton
+            // 
+            this.CometTimerButton.Enabled = false;
+            this.CometTimerButton.Location = new System.Drawing.Point(420, 135);
+            this.CometTimerButton.Name = "CometTimerButton";
+            this.CometTimerButton.Size = new System.Drawing.Size(36, 20);
+            this.CometTimerButton.TabIndex = 23;
+            this.CometTimerButton.Text = "•••";
+            this.CometTimerButton.UseVisualStyleBackColor = true;
+            this.CometTimerButton.Click += new System.EventHandler(this.CometTimerButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 441);
+            this.Controls.Add(this.CometTimerButton);
             this.Controls.Add(this.MoveZoneDownButton);
             this.Controls.Add(this.MoveZoneUpButton);
             this.Controls.Add(this.LayerGroupBox);
@@ -943,6 +991,10 @@
         private System.Windows.Forms.ToolStripTextBox CurrentFileToolStripTextBox;
         private System.Windows.Forms.CheckBox Star8CheckBox;
         private System.Windows.Forms.CheckBox Star7CheckBox;
+        private System.Windows.Forms.ToolStripMenuItem TemplatesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MoveScenarioUpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MoveScenarioDownToolStripMenuItem;
+        private System.Windows.Forms.Button CometTimerButton;
     }
 }
 

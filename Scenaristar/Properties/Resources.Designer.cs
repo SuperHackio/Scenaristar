@@ -193,6 +193,16 @@ namespace Scenaristar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FlipswitchObserver {
+            get {
+                object obj = ResourceManager.GetObject("FlipswitchObserver", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Gearmo {
             get {
                 object obj = ResourceManager.GetObject("Gearmo", resourceCulture);
@@ -443,9 +453,29 @@ namespace Scenaristar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Squizzard {
+            get {
+                object obj = ResourceManager.GetObject("Squizzard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap StarFrame {
             get {
                 object obj = ResourceManager.GetObject("StarFrame", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tamakoro {
+            get {
+                object obj = ResourceManager.GetObject("Tamakoro", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

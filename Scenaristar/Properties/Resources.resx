@@ -157,6 +157,9 @@
   <data name="FieryGobblegut" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FieryGobblegut.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="FlipswitchObserver" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlipswitchObserver.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Gearmo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Gearmo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -232,8 +235,14 @@
   <data name="SpeedyComet" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpeedyComet.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Squizzard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Squizzard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="StarFrame" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\StarFrame.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tamakoro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tamakoro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="TheChimp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TheChimp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

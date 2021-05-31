@@ -167,6 +167,39 @@ namespace GalaxyMaps
             if (Checks.Length > 6 && Checks[7].Checked) starmask ^= 128;
             PowerStarID = starmask;
         }
+
+        public void CalculateStarID(bool Star1, bool Star2, bool Star3, bool Star4, bool Star5, bool Star6, bool? Star7 = null, bool? Star8 = null)
+        {
+            int starmask = 0;
+            if (Star1) starmask ^= 1;
+            if (Star2) starmask ^= 2;
+            if (Star3) starmask ^= 4;
+            if (Star4) starmask ^= 8;
+            if (Star5) starmask ^= 16;
+            if (Star6) starmask ^= 32;
+            if (Star7.HasValue && Star7.Value) starmask ^= 64;
+            if (Star8.HasValue && Star8.Value) starmask ^= 128;
+            PowerStarID = starmask;
+        }
+
+        /// <summary>
+        /// Calculates the new PowerStarID
+        /// </summary>
+        /// <param name="Checks">Checkbox array. Must be length == 6 or Length == 8</param>
+        public void CalculateStarID(bool[] Checks)
+        {
+            int starmask = 0;
+            if (Checks[0]) starmask ^= 1;
+            if (Checks[1]) starmask ^= 2;
+            if (Checks[2]) starmask ^= 4;
+            if (Checks[3]) starmask ^= 8;
+            if (Checks[4]) starmask ^= 16;
+            if (Checks[5]) starmask ^= 32;
+            if (Checks.Length > 6 && Checks[6]) starmask ^= 64;
+            if (Checks.Length > 6 && Checks[7]) starmask ^= 128;
+            PowerStarID = starmask;
+        }
+
         /// <summary>
         /// Creates an array of Booleans based on this Scenario's <see cref="PowerStarID"/>
         /// </summary>
@@ -188,6 +221,20 @@ namespace GalaxyMaps
                 return new bool[8] { chkStar1, chkStar2, chkStar3, chkStar4, chkStar5, chkStar6, chkStar7, chkStar8 };
             else
                 return new bool[6] { chkStar1, chkStar2, chkStar3, chkStar4, chkStar5, chkStar6 };
+        }
+
+        public void SetUseStar(int StarID, bool Toggle)
+        {
+            if (StarID > 8)
+                return;
+#if DEBUG
+            bool[] Stars = CalculateStarID(PowerStarID, true);
+#else
+            bool[] Stars = CalculateStarID(PowerStarID, false);
+#endif
+            Stars[StarID-1] = Toggle;
+
+            CalculateStarID(Stars);
         }
 
         /// <summary>

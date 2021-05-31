@@ -31,11 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ZoneForm));
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.AbortButton = new System.Windows.Forms.Button();
+            this.OKButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // NameTextBox
             // 
-            this.NameTextBox.Location = new System.Drawing.Point(12, 38);
+            this.NameTextBox.Location = new System.Drawing.Point(12, 25);
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(213, 20);
             this.NameTextBox.TabIndex = 0;
@@ -45,16 +47,40 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(216, 26);
+            this.label1.Size = new System.Drawing.Size(216, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Type the name of the Zone in the box below\r\nPress Enter to confirm, press the X t" +
-    "o cancel";
+            this.label1.Text = "Type the name of the Zone in the box below";
+            // 
+            // AbortButton
+            // 
+            this.AbortButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.AbortButton.Location = new System.Drawing.Point(12, 51);
+            this.AbortButton.Name = "AbortButton";
+            this.AbortButton.Size = new System.Drawing.Size(75, 23);
+            this.AbortButton.TabIndex = 32;
+            this.AbortButton.Text = "Cancel";
+            this.AbortButton.UseVisualStyleBackColor = true;
+            this.AbortButton.Click += new System.EventHandler(this.AbortButton_Click);
+            // 
+            // OKButton
+            // 
+            this.OKButton.Location = new System.Drawing.Point(150, 51);
+            this.OKButton.Name = "OKButton";
+            this.OKButton.Size = new System.Drawing.Size(75, 23);
+            this.OKButton.TabIndex = 31;
+            this.OKButton.Text = "OK";
+            this.OKButton.UseVisualStyleBackColor = true;
+            this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
             // 
             // ZoneForm
             // 
+            this.AcceptButton = this.OKButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(237, 67);
+            this.CancelButton = this.AbortButton;
+            this.ClientSize = new System.Drawing.Size(237, 80);
+            this.Controls.Add(this.AbortButton);
+            this.Controls.Add(this.OKButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.NameTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -64,7 +90,6 @@
             this.MinimizeBox = false;
             this.Name = "ZoneForm";
             this.Text = "Scenaristar - Add Zone";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ZoneForm_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -73,5 +98,7 @@
         #endregion
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox NameTextBox;
+        private System.Windows.Forms.Button AbortButton;
+        private System.Windows.Forms.Button OKButton;
     }
 }

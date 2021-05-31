@@ -27,7 +27,7 @@ namespace Scenaristar
             ScenarioListView.SetDoubleBuffered();
             Text = "Scenaristar - " + Application.ProductVersion;
             InfoToolStripStatusLabel.Text = "Welcome to Scenaristar!";
-            ImageSizeToolStripComboBox.SelectedIndex = 0;
+            ImageSizeToolStripComboBox.SelectedIndex = 1;
             ScenarioTypeComboBox.DataSource = Enum.GetValues(typeof(ScenarioSMG2.StarType));
             //CometComboBox.DataSource = Enum.GetValues(typeof(Scenario.CometType));
 
@@ -151,6 +151,9 @@ namespace Scenaristar
             RenameZoneButton.Enabled = Trigger;
             AddToolStripMenuItem.Enabled = Trigger;
             RemoveToolStripMenuItem.Enabled = Trigger;
+            MoveScenarioUpToolStripMenuItem.Enabled = Trigger;
+            MoveScenarioDownToolStripMenuItem.Enabled = Trigger;
+            TemplatesToolStripMenuItem.Enabled = Trigger;
         }
 
         private void NewToolStripMenuItem_Click(object sender, EventArgs e)
@@ -166,13 +169,9 @@ namespace Scenaristar
             StarSmallImageList.Images.Clear();
             ScenarioListView.Items.Clear();
             Zones.Add("UnknownGalaxy");
-            ScenarioList.Add(new ScenarioSMG2() { Zones = new List<Zone>() { new Zone("UnknownGalaxy") } });
-            for (int i = 0; i < ScenarioList.Count; i++)
-            {
-                CompileImage(i);
-                ListViewItem LVI = new ListViewItem() { Tag = ScenarioList[i], Text = ScenarioList[i].Name, ImageIndex = i };
-                ScenarioListView.Items.Add(LVI);
-            }
+
+            AddToolStripMenuItem_Click(sender, e);
+
             ZonesListBox.Items.Clear();
             for (int i = 0; i < Zones.Count; i++)
                 ZonesListBox.Items.Add(Zones[i]);
@@ -465,6 +464,7 @@ namespace Scenaristar
                 case ScenarioSMG2.StarType.Green:
                     g.DrawImage(Properties.Resources.GreenStar, 48f, 98f);
                     break;
+#if DEBUG
                 case ScenarioSMG2.StarType.Red:
                     g.DrawImage(Properties.Resources.RedStar, 48f, 122f);
                     break;
@@ -473,7 +473,8 @@ namespace Scenaristar
                     break;
                 case ScenarioSMG2.StarType.Blue:
                     g.DrawImage(Properties.Resources.BlueStar, 48f, 122f);
-                    break;
+                    break; 
+#endif
                 default:
                     break;
             }
@@ -527,14 +528,8 @@ namespace Scenaristar
                         g.DrawImage(ResizeBitmap(Properties.Resources.BoomsdayMachine, 166, 153), 317f, 319f);
                         break;
                     case "クッパ":
-                        g.DrawImage(Properties.Resources.Bowser, 348f, 340f);
-                        break;
                     case "クッパLv2":
-                        g.DrawImage(Properties.Resources.Bowser, 348f, 340f);
-                        break;
                     case "クッパLv3":
-                        g.DrawImage(Properties.Resources.Bowser, 348f, 340f);
-                        break;
                     case "クッパLv4":
                         g.DrawImage(Properties.Resources.Bowser, 348f, 340f);
                         break;
@@ -579,6 +574,15 @@ namespace Scenaristar
                         break;
                     case "キノピオ":
                         g.DrawImage(ResizeBitmap(Properties.Resources.CaptainToad, 150, 175), 325f, 310f);
+                        break;
+                    case "サンディー":
+                        g.DrawImage(ResizeBitmap(Properties.Resources.Squizzard, 150, 175), 325f, 310f);
+                        break;
+                    case "フリップパネル監視者":
+                        g.DrawImage(ResizeBitmap(Properties.Resources.FlipswitchObserver, 150, 150), 325f, 325f);
+                        break;
+                    case "たまころ":
+                        g.DrawImage(ResizeBitmap(Properties.Resources.Tamakoro, 150, 150), 328f, 325f);
                         break;
                 }
             }
@@ -733,27 +737,10 @@ namespace Scenaristar
         private void CometComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!Startup)
-                switch ((ScenarioSMG2.CometType)CometComboBox.SelectedValue)
-                {
-                    case ScenarioSMG2.CometType.Red:
-                        TimeLimitNumericUpDown.Enabled = true;
-                        break;
-                    case ScenarioSMG2.CometType.Purple:
-                        TimeLimitNumericUpDown.Enabled = true;
-                        break;
-                    case ScenarioSMG2.CometType.Dark:
-                        break;
-                    case ScenarioSMG2.CometType.Exterminate:
-                        TimeLimitNumericUpDown.Enabled = true;
-                        break;
-                    case ScenarioSMG2.CometType.Mimic:
-                        break;
-                    case ScenarioSMG2.CometType.Quick:
-                        break;
-                    default:
-                        TimeLimitNumericUpDown.Enabled = false;
-                        break;
-                }
+            {
+                TimeLimitNumericUpDown.Enabled = (ScenarioSMG2.CometType)CometComboBox.SelectedValue != ScenarioSMG2.CometType.None;
+                CometTimerButton.Enabled = TimeLimitNumericUpDown.Enabled;
+            }
 
             if (Loading)
                 return;
@@ -957,6 +944,10 @@ namespace Scenaristar
             foreach (string Zone in Zones)
                 NEW.Zones.Add(new Zone(Zone));
 
+            NEW.Number = ScenarioList.Count + 1;
+            if (NEW.Number > 8)
+                NEW.Number = 8;
+            NEW.SetUseStar(NEW.Number, true);
             ScenarioList.Add(NEW);
             InfoToolStripStatusLabel.Text = "Added \"New Star\"";
             OriginalFile = false;
@@ -994,7 +985,7 @@ namespace Scenaristar
         }
 
 #region Timer Stuff
-        private const string UpdateName = "The Initial Release";
+        private const string UpdateName = "The Template Update";
 
         private int StatusState = 0;
         private int Scrollnumber = 0;
@@ -1004,7 +995,7 @@ namespace Scenaristar
         {
             "Scenaristar " + Application.ProductVersion + ", \"" + UpdateName + "\"",
             "Scenaristar was made by Super Hackio",
-            "Scenaristar is powered by the Hack.io Library"
+            "Scenaristar is powered by the Hack.io Libraries"
         };
         private readonly string[] Flavour = new string[]
         {
@@ -1012,7 +1003,8 @@ namespace Scenaristar
             "This is the start of the galaxy creation process, or is it the end?",
             "Legend has it that Red and Blue Stars are new Scenario Types",
             "Can you imagine a world where Super Mario Galaxy doesn't exist?",
-            "Big Yeet"
+            "Big Yeet",
+            "Evas ot tegrof tnod!"
         };
 
         private void StatusTimer_Tick(object sender, EventArgs e)
@@ -1124,6 +1116,60 @@ namespace Scenaristar
             ScenarioListView.SelectedItems.Clear();
             ScenarioListView.Items[selected].Selected = true;
             OriginalFile = false;
+        }
+
+        private void MoveScenarioUpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ScenarioListView.SelectedItems.Count == 0)
+                return;
+
+            int index = ScenarioListView.SelectedIndices[0];
+            int dest = index == 0 ? ScenarioListView.Items.Count-1 : index--;
+            ScenarioList.Move(index, dest);
+            ListViewItem LVI = ScenarioListView.Items[index];
+            ScenarioListView.Items.RemoveAt(index);
+            ScenarioListView.Items.Insert(dest, LVI);
+            Redraw();
+        }
+
+        private void MoveScenarioDownToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ScenarioListView.SelectedItems.Count == 0)
+                return;
+
+            int index = ScenarioListView.SelectedIndices[0];
+            int dest = index == ScenarioListView.Items.Count - 1 ? 0 : index++;
+            ScenarioList.Move(index, dest);
+            ListViewItem LVI = ScenarioListView.Items[index];
+            ScenarioListView.Items.RemoveAt(index);
+            ScenarioListView.Items.Insert(dest, LVI);
+            Redraw();
+        }
+
+        private void TemplatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TemplateForm TF = new TemplateForm(ScenarioList);
+            if (TF.ShowDialog() == DialogResult.OK)
+            {
+                ScenarioSMG2 NEW = TF.GetScenarioTemplate(Zones, ref ScenarioList);
+                ScenarioList.Add(NEW);
+                InfoToolStripStatusLabel.Text = $"Added \"{NEW.Name}\"";
+                OriginalFile = false;
+                StatusResumeCountdown = 3;
+                if (ScenarioListView.SelectedIndices.Count != 0)
+                    Redraw(ScenarioListView.SelectedIndices[0]);
+                else
+                    Redraw();
+            }
+        }
+
+        private void CometTimerButton_Click(object sender, EventArgs e)
+        {
+            CometTimerForm CTF = new CometTimerForm((int)TimeLimitNumericUpDown.Value);
+            if (CTF.ShowDialog() == DialogResult.OK)
+            {
+                TimeLimitNumericUpDown.Value = CTF.TimeLimit;
+            }
         }
 
         private void MoveZoneDownButton_Click(object sender, EventArgs e)

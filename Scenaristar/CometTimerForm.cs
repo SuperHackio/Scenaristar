@@ -10,22 +10,20 @@ using System.Windows.Forms;
 
 namespace Scenaristar
 {
-    public partial class ZoneForm : Form
+    public partial class CometTimerForm : Form
     {
-        public ZoneForm()
+        public CometTimerForm(int time)
         {
             InitializeComponent();
             CenterToParent();
+            CometMinutesNumericUpDown.Value = time / 60;
+            CometSecondsNumericUpDown.Value = time % 60;
         }
+
+        public int TimeLimit => (int)((60 * CometMinutesNumericUpDown.Value) + CometSecondsNumericUpDown.Value);
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(NameTextBox.Text))
-            {
-                MessageBox.Show("Can't set the zone name to be empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             DialogResult = DialogResult.OK;
             Close();
         }
