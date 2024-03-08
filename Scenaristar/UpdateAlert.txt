@@ -1,0 +1,7 @@
+﻿2.0.0.0
+
+#Required
+#Notes
+- Updated to .NET 8.0
+- Proper SMG1 support
+- Adds Dark Mode
