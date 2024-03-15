@@ -1,7 +1,6 @@
-﻿2.0.0.0
+﻿1.5.0.1
 
 #Required
 #Notes
-- Updated to .NET 8.0
-- Proper SMG1 support
-- Adds Dark Mode
+- Fixed a bug where Updates were not checked for
+- Fixed a bug where switching scenarios would not update the visual chart of zone layers
