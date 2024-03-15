@@ -689,10 +689,10 @@ public partial class ScenarioEditorForm : Form
             StarCheckedListBox.SetItemChecked(i, Current[i]);
         }
 
+        IsIgnoreChanges = false;
         ZonesListBox.SelectedIndex = tmp;
         SetAppStatus(true);
         ResumeLayout();
-        IsIgnoreChanges = false;
         UpdateStatusBar(true);
     }
 
@@ -1123,8 +1123,11 @@ public partial class ScenarioEditorForm : Form
             Random rng = new();
             if (rng.Next(0, 100) < 100)
             {
-                InfoToolStripStatusLabel.Text = Flavour[rng.Next(0, Flavour.Length)];
-                StatusResumeCountdown = 1;
+                if (Program.UpdateInfo is not null && Program.UpdateInfo.Value.IsNewer())
+                    InfoToolStripStatusLabel.Text = $"An Update is available! Scenaristar {Program.UpdateInfo.Value.Version} -- {Program.GIT_RELEASE_URL}";
+                else
+                    InfoToolStripStatusLabel.Text = Flavour[rng.Next(0, Flavour.Length)];
+                StatusResumeCountdown = 2;
             }
         }
         InfoToolStripStatusLabel.Text += "   ";

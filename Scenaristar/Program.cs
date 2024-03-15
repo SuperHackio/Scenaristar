@@ -15,6 +15,7 @@ internal static class Program
     public static bool IsGameFileLittleEndian { get; set; } = false;
     public static bool IsUnsavedChanges { get; set; } = false;
     private static ScenarioEditorForm? Editor;
+    public static UpdateInformation? UpdateInfo;
 
     /// <summary>
     ///  The main entry point for the application.
@@ -27,6 +28,16 @@ internal static class Program
         Application.SetCompatibleTextRenderingDefault(false);
         // Prevents floats being written to the .dae with commas instead of periods on European systems.
         CultureInfo.CurrentCulture = new("", false);
+
+        UpdateInfo = UpdateInformation.IsUpdateExist(UPDATEALERT_URL);
+        if (UpdateInfo is not null && UpdateInfo.Value.IsNewer())
+        {
+            if (UpdateInfo.Value.IsUpdateRequired)
+            {
+                MessageBox.Show("An update for Scenaristar is available. To continue using Scenaristar, please update to the latest version.", "Update Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
 
         if (args.Any(A => A.Equals("-le")))
         {
